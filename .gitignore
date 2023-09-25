@@ -1,11 +1,9 @@
-# Folders
+# created by virtualenv automatically
 Include
 Lib
+
+__init__.py
 migrations
 __pycache__
 Scripts
-bin
-
-#Files
 pyvenv.cfg
-__init__.py
