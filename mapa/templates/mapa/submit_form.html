@@ -1,0 +1,16 @@
+{% extends 'mapa/base.html' %}
+
+{% block title %}Agregar Puntos{% endblock %}
+
+{% block content %}
+    <html>
+        <body>
+            <h1>Agregar Puntos</h1>
+            <form action="/submit/" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="OK">
+            </form>
+        </body>
+    </html>
+{% endblock %}
