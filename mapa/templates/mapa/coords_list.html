@@ -8,13 +8,18 @@
             <h1>Coordenadas</h1>
                 <h2>Ascensor</h2>
 
+                {% include './icons/elevator.svg' %}
+
                 {% for item in ascensor %}
-                {{ item }}<br>
+                <br>{{ item }}
                 {% endfor %}
 
                 <h2>Rampa</h2>
+
+                {% include './icons/ramp.svg' %}
+
                 {% for item in rampa %}
-                {{ item }}<br>
+                <br>{{ item }}
                 {% endfor %}
         </body>
     </html>
