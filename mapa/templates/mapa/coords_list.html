@@ -1,0 +1,21 @@
+{% extends 'mapa/base.html' %}
+
+{% block title %}Coordenadas{% endblock %}
+
+{% block content %}
+    <html>
+        <body>
+            <h1>Coordenadas</h1>
+                <h2>Ascensor</h2>
+
+                {% for item in ascensor %}
+                {{ item }}<br>
+                {% endfor %}
+
+                <h2>Rampa</h2>
+                {% for item in rampa %}
+                {{ item }}<br>
+                {% endfor %}
+        </body>
+    </html>
+{% endblock %}
