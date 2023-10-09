@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo 14</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
-</head>
-<body>
+{% extends 'mapa/base.html' %}
+{% load static %}
+
+{% block headcontent %}
+<title>Grupo 14</title>
+{% endblock %}
+
+{% block bodycontent %}
     <h1>Esta es la página para encontrar rutas</h1>
     <div class="btn-help" id="btnHelp">?</div>
     <div class="help-title" id="helpTitle">
@@ -16,5 +14,4 @@
     <div class="help-body" id="helpBody">
         <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque officiis atque dolore inventore architecto cupiditate unde sit explicabo voluptatem. Repellat culpa consequuntur minus? Doloribus a quisquam nam sint velit dolorem.</p>
     </div>
-</body>
-</html>
+{% endblock %}

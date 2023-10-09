@@ -1,0 +1,21 @@
+{% extends 'mapa/base.html' %}
+{% load static %}
+
+{% block headcontent %}
+<title>Grupo 14</title>
+{% endblock %}
+    
+{% block bodycontent %}
+<h1>Grupo 14</h1>
+<div class="btn-help" id="btnHelp">?</div>
+<div class="help-title" id="helpTitle">
+    <h2 id="heading">¿Necesitas ayuda?</h2>
+</div>
+<div class="help-body" id="helpBody">
+    <p id="description">Esta página tiene dos funciones: Actualizar el estado del campus a tiempo real por medio del feedback de los usuarios, y mostrar rutas accesibles dentro del campus tomando en cuenta dichas actualizaciones. Para saber más, haz click en "Ver estado del campus" o "Encontrar rutas".</p>
+</div>
+<div>
+    <button onclick="window.location.href='/status'">Ver estado del campus</button>
+    <button onclick="window.location.href='/route'">Encontrar rutas</button>
+</div>
+{% endblock %}

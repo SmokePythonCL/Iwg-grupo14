@@ -1,6 +1,7 @@
 # created by virtualenv automatically
 Include
 Lib
+bin
 
 __init__.py
 migrations
