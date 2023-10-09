@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo 14</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <h1>Grupo 14</h1>
+    <div class="btn-help" id="btnHelp">?</div>
+    <div class="help-title" id="helpTitle">
+        <h2 id="heading">¿Necesitas ayuda?</h2>
+    </div>
+    <div class="help-body" id="helpBody">
+        <p id="description">Esta página tiene dos funciones: Actualizar el estado del campus a tiempo real por medio del feedback de los usuarios, y mostrar rutas accesibles dentro del campus tomando en cuenta dichas actualizaciones. Para saber más, haz click en "Ver estado del campus" o "Encontrar rutas".</p>
+    </div>
+    <div>
+        <button onclick="window.location.href='status.html'">Ver estado del campus</button>
+        <button onclick="window.location.href='route.html'">Encontrar rutas</button>
+    </div>
 </body>
 </html>
