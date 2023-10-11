@@ -14,4 +14,26 @@
     <div class="help-body" id="helpBody">
         <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque officiis atque dolore inventore architecto cupiditate unde sit explicabo voluptatem. Repellat culpa consequuntur minus? Doloribus a quisquam nam sint velit dolorem.</p>
     </div>
+
+    <div class="map">
+        <img src="/static/images/testmap.jpg" alt="Workplace" usemap="#statusmap" width="1000" height="1000">
+
+        <map name="statusmap">
+            {% for item in ascensor %}
+            <area shape="rect" coords="{{ item }}" alt="Computer" href="/route" onclick="myFunction()">
+            {% endfor %}
+
+            {% for item in rampa %}
+            <area shape="rect" coords="{{ item }}" alt="Computer" href="/route">
+            {% endfor %}
+          </map>
+        
+        <!--
+        EJEMPLO
+        <script>
+        function myFunction() {
+            alert("You clicked the coffee cup!");
+        }
+        </script>-->
+    </div>
 {% endblock %}
