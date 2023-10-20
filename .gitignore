@@ -2,9 +2,11 @@
 Include
 Lib
 bin
+lib
 
 __init__.py
 migrations
 __pycache__
 Scripts
 pyvenv.cfg
+CAMPUS-SJ.png

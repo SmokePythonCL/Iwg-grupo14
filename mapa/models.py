@@ -10,7 +10,8 @@ class CoordsModel(models.Model):
     name = models.CharField(max_length=100)
     point_type = models.CharField(max_length=1, choices=POINT_CHOICE)
     status = models.CharField(max_length=1, choices=STATUS)
-    coords = models.CharField(max_length=100)
+    coord_x = models.CharField(max_length=100)
+    coord_y = models.CharField(max_length=100)
     comment = models.CharField(max_length=100, blank=True)
 
     def __str__(self):

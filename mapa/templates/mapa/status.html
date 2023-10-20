@@ -2,38 +2,24 @@
 {% load static %}
 
 {% block headcontent %}
-<title>Grupo 14</title>
+    <title>Estado mapa - G14</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/map.css' %}" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin="" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
 {% endblock %}
 
 {% block bodycontent %}
-    <h1>Esta es la página para ver el estado del campus</h1>
+    <h1></h1>
     <div class="btn-help" id="btnHelp">?</div>
     <div class="help-title" id="helpTitle">
         <h2 id="heading">¿Necesitas ayuda?</h2>
     </div>
     <div class="help-body" id="helpBody">
-        <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque officiis atque dolore inventore architecto cupiditate unde sit explicabo voluptatem. Repellat culpa consequuntur minus? Doloribus a quisquam nam sint velit dolorem.</p>
+        <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque officiis atque dolore
+            inventore architecto cupiditate unde sit explicabo voluptatem. Repellat culpa consequuntur minus? Doloribus a
+            quisquam nam sint velit dolorem.</p>
     </div>
-
-    <div class="map">
-        <img src="/static/images/testmap.jpg" alt="Workplace" usemap="#statusmap" width="1000" height="1000">
-
-        <map name="statusmap">
-            {% for item in ascensor %}
-            <area shape="rect" coords="{{ item }}" alt="Computer" href="/route" onclick="myFunction()">
-            {% endfor %}
-
-            {% for item in rampa %}
-            <area shape="rect" coords="{{ item }}" alt="Computer" href="/route">
-            {% endfor %}
-          </map>
-        
-        <!--
-        EJEMPLO
-        <script>
-        function myFunction() {
-            alert("You clicked the coffee cup!");
-        }
-        </script>-->
-    </div>
-{% endblock %}
+    
+    <div id="map" data-json="{{ coords }}"></div>
+    <script src="{% static '/js/map.js' %}" defer></script>
+    {% endblock %}

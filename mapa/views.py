@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import CoordsModel
+import json
 
 # Create your views here.
 
@@ -14,17 +15,30 @@ def route(request):
 
 def status(request):
     points = CoordsModel.objects.all()
-    ascensor = []
-    rampa = []
+    coords_dicts = {"Lift": [],
+                    "Slope": [],
+                    "Other": []}
 
     for item in points:
-        coord_type = item.point_type
-        coord = item.coords
+        if item.point_type == "0":
+            coord_type = "Lift"
+        elif item.point_type == "1":
+            coord_type = "Slope"
+        else:
+            coord_type = "Other"
 
-        if coord_type == "0":
-            ascensor.append(coord)
+        if item.status == "0":
+            status = "green"
+        elif item.status == "1":
+            status = "yellow"
+        else:
+            status = "red"
         
-        elif coord_type == "1":
-            rampa.append(coord)
+        coord_x = item.coord_x
+        coord_y = item.coord_y
 
-    return render(request, 'mapa/status.html', {"ascensor": ascensor, "rampa": rampa})
+        coords_dicts[coord_type].append([coord_x, coord_y, status])
+
+    coords_json = json.dumps(coords_dicts)
+    
+    return render(request, 'mapa/status.html', {"coords": coords_json})

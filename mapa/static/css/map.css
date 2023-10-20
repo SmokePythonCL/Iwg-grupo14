@@ -1,0 +1,47 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.green-elevator {
+  filter: brightness(0) saturate(100%) invert(65%) sepia(74%) saturate(3491%) hue-rotate(84deg) brightness(117%) contrast(109%);
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.yellow-elevator {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(99%) saturate(597%) hue-rotate(349deg) brightness(104%) contrast(109%);
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.red-elevator {
+  filter: brightness(0) saturate(100%) invert(21%) sepia(49%) saturate(7432%) hue-rotate(353deg) brightness(92%) contrast(115%);
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.green-slope {
+  filter: brightness(0) saturate(100%) invert(65%) sepia(74%) saturate(3491%) hue-rotate(84deg) brightness(117%) contrast(109%);
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.yellow-slope {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(99%) saturate(597%) hue-rotate(349deg) brightness(104%) contrast(109%);
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.red-slope {
+  filter: brightness(0) saturate(100%) invert(21%) sepia(49%) saturate(7432%) hue-rotate(353deg) brightness(92%) contrast(115%);
+  max-height: 100px;
+  max-width: 100px;
+}
