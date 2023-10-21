@@ -45,7 +45,7 @@ button {
     margin-right: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    z-index: 1;
+    z-index: 9;
 }
 .btn-help:hover {
     background: linear-gradient(lightgray, lightblue);
@@ -60,6 +60,7 @@ button {
     margin-right: 5px;
     top: 0; right: 25px;
     border-radius: 25px 0 0 0;
+    z-index: 9;
 }
 .help-title h2 {
     margin: 0;
@@ -78,6 +79,7 @@ button {
     top: 40px; right: 30px;
     text-align: justify;
     border-radius: 0 0 25px 25px;
+    z-index: 9;
 }
 .help-body p {
     margin: 14px;
