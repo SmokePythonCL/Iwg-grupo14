@@ -79,31 +79,17 @@ var coordenadas = []
 var punto = null
 var estado = null
 
-for (var tipo in coords) {
-    coordenadas = coords[tipo][0];
-    punto = xy(coordenadas[0], coordenadas[1]);
-    estado = coordenadas[2].concat(tipo);
-
-    if (estado === "greenSlope") {
-        L.marker(punto, {icon: greenSlope}).addTo(map).bindPopup(tipo).on('click', onClick);
-    } else if (estado === "yellowSlope") {
-        L.marker(punto, {icon: yellowSlope}).addTo(map).bindPopup(tipo).on('click', onClick);
-    } else if (estado === "redSlope") {
-        L.marker(punto, {icon: redSlope}).addTo(map).bindPopup(tipo).on('click', onClick);
-    } else if (estado === "greenLift") {
-        L.marker(punto, {icon: greenLift}).addTo(map).bindPopup(tipo).on('click', onClick);
-    } else if (estado === "yellowLift") {
-        L.marker(punto, {icon: yellowLift}).addTo(map).bindPopup(tipo).on('click', onClick);
-    } else if (estado === "redLift") {
-        L.marker(punto, {icon: redLift}).addTo(map).bindPopup(tipo).on('click', onClick);
-    } else if (estado === "greenOther") {
-        L.marker(punto, {icon: greenOther}).addTo(map).bindPopup(tipo).on('click', onClick);
-    } else if (estado === "yellowOther") {
-        L.marker(punto, {icon: yellowOther}).addTo(map).bindPopup(tipo).on('click', onClick);
-    } else if (estado === "redOther") {
-        L.marker(punto, {icon: redOther}).addTo(map).bindPopup(tipo).on('click', onClick);
+function loadMarker(coords) {
+    for (var tipo in coords) {
+        coordenadas = coords[tipo][0];
+        punto = xy(coordenadas[0], coordenadas[1]);
+        estado = coordenadas[2].concat(tipo);
+    
+        L.marker(punto, {icon: eval(estado)}).addTo(map).bindPopup(tipo).on('click', onClick);
     }
-}
+};
+
+loadMarker(coords);
 
 // Map set
 map.setView( [500, 500], 0);
@@ -111,3 +97,13 @@ map.setMaxBounds(bounds);
 map.on('drag', function () {
     map.panInsideBounds(bounds, { animate: false });
 });
+
+/*
+function test() {
+    console.log("Cambio")
+};
+
+map.on('baselayerchange', test());
+
+Reemplazar layerControl por funciones onClick dentro del mapa.
+*/
