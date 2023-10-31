@@ -1,10 +1,14 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     var btnHelp = document.getElementById("btnHelp");
     var helpTitle = document.getElementById("helpTitle");
     var helpBody = document.getElementById("helpBody");
     var heading = document.getElementById("heading");
     var description = document.getElementById("description");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popup");
+    var closeMsg = document.getElementById("closeMessage");
+    var notShowAgainCheckbox = document.getElementById("notShowAgain");
+    var welcome = document.getElementById("welcoming");
 
     var displayToggle = 1;
     btnHelp.onclick = function () {
@@ -68,5 +72,33 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
-
+    //localStorage.setItem("messageDisplayed", "false"); //to check if welcome message works
+    if (localStorage.getItem("messageDisplayed") !== "true") {
+        overlay.style.display = "block";
+        closeMsg.addEventListener("click", function () {
+            if (notShowAgainCheckbox.checked) {
+                localStorage.setItem("messageDisplayed", "true");
+            }
+            closePopup();
+        });
+    } else {
+        popup.style.display = "none";
+        overlay.style.display = "none";
+    }
+    //localStorage.setItem("alreadyVisited", "false"); //to check if welcome message change works
+    if (localStorage.getItem("alreadyVisited") !== "true") {
+        closeMsg.addEventListener("click", function (){
+        localStorage.setItem("alreadyVisited", "true");
+        })
+    } else {
+        welcome.textContent = "Welcome back!"
+    }
 });
+function closePopup() {
+    popup.classList.add("fade-out");
+    overlay.style.animation = "fade-out 0.5s ease-out forwards";
+    setTimeout(function() {
+        popup.style.display = "none";
+        overlay.style.display = "none";
+    }, 500);
+}

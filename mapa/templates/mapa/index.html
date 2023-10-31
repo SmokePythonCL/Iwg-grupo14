@@ -14,8 +14,18 @@
 <div class="help-body" id="helpBody">
     <p id="description">Esta página tiene dos funciones: Actualizar el estado del campus a tiempo real por medio del feedback de los usuarios, y mostrar rutas accesibles dentro del campus tomando en cuenta dichas actualizaciones. Para saber más, haz click en "Ver estado del campus" o "Encontrar rutas".</p>
 </div>
-<div>
+<div class="homepage">
     <button onclick="window.location.href='/status'">Ver estado del campus</button>
     <button onclick="window.location.href='/route'">Encontrar rutas</button>
+</div>
+<div id="overlay">
+    <div class="popup" id="popup">
+        <h2 id="welcoming">Welcome to our Website!</h2>
+        <p>Thank you for visiting our website.</p>
+        <label>
+            <input type="checkbox" id="notShowAgain"> Do not show again
+        </label>
+        <button id="closeMessage" onclick="closePopup()">Ok</button>
+    </div>
 </div>
 {% endblock %}
