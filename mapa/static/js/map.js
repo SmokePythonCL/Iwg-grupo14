@@ -81,11 +81,14 @@ var estado = null
 
 function loadMarker(coords) {
     for (var tipo in coords) {
-        coordenadas = coords[tipo][0];
-        punto = xy(coordenadas[0], coordenadas[1]);
-        estado = coordenadas[2].concat(tipo);
-    
-        L.marker(punto, {icon: eval(estado)}).addTo(map).bindPopup(tipo).on('click', onClick);
+        var i = 0;
+        while (i < coords[tipo].length) {
+            coordenadas = coords[tipo][i];
+            punto = xy(coordenadas[0], coordenadas[1]);
+            estado = coordenadas[2].concat(tipo);
+            
+            L.marker(punto, {icon: eval(estado)}).addTo(map).bindPopup(tipo).on('click', onClick)
+            i++;}
     }
 };
 
