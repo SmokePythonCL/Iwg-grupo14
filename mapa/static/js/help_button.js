@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("alreadyVisited", "true");
         })
     } else {
-        welcome.textContent = "Welcome back!"
+        welcome.textContent = "¡Bienvenido de vuelta!"
     }
 });
 function closePopup() {
