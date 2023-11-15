@@ -13,6 +13,7 @@ class CoordsModel(models.Model):
     coord_x = models.CharField(max_length=100)
     coord_y = models.CharField(max_length=100)
     comment = models.CharField(max_length=100, blank=True)
+    layer = models.CharField(max_length=100)
 
     def __str__(self):
         return self.point_type

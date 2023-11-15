@@ -17,6 +17,12 @@ var basemaps = {
     //"Quinto Piso": fifthfloor,
 }
 
+var firstMarkers = L.layerGroup();
+var secondMarkers = L.layerGroup();
+var thirdMarkers = L.layerGroup();
+//var fourthMarkers = L.layerGroup();
+//var fifthMarkers = L.layerGroup();
+
 var map = L.map('map', {
     crs: L.CRS.Simple,
     minZoom: 0,
@@ -24,8 +30,6 @@ var map = L.map('map', {
     layers: [basemap],
     attribution: "USM SJ"
 });
-
-var layerControl = L.control.layers(basemaps).addTo(map);
 
 var yx = L.latLng;
 var xy = function(x, y) {
@@ -75,27 +79,63 @@ function onClick(e) {
 }
 
 var coords = JSON.parse(document.querySelector("#map").getAttribute('data-json'));
-var coordenadas = []
-var punto = null
-var estado = null
+var coordenadas = [];
+var punto = null;
+var estado = null;
+var capa = null;
 
-function loadMarker(coords) {
-    for (var tipo in coords) {
-        coordenadas = coords[tipo][0];
-        punto = xy(coordenadas[0], coordenadas[1]);
-        estado = coordenadas[2].concat(tipo);
-    
-        L.marker(punto, {icon: eval(estado)}).addTo(map).bindPopup(tipo).on('click', onClick);
-    }
-};
+for (var tipo in coords) {
+    coordenadas = coords[tipo][0];
+    punto = xy(coordenadas[0], coordenadas[1]);
+    estado = coordenadas[2].concat(tipo);
+    capa = coordenadas[3].toLowerCase();
 
-loadMarker(coords);
+    var marker = L.marker(punto, { icon: eval(estado), customOption: capa }).bindPopup(tipo).on('click', onClick);
+
+    if (capa === "primer piso") {
+        firstMarkers.addLayer(marker);
+    } else if (capa === "segundo piso") {
+        secondMarkers.addLayer(marker);
+    } else if (capa === "tercer piso") {
+        thirdMarkers.addLayer(marker);
+    } /*else if (capa === "cuarto piso"){
+        fourthMarkers.addLayer(marker);
+    } else if (capa === "quinto piso"){
+        fifthMarkers.addLayer(marker);
+    }*/
+}
+//Add only first layer markers since it's the default layer
+firstMarkers.addTo(map);
+var layerControl = L.control.layers(basemaps).addTo(map);
 
 // Map set
 map.setView( [500, 500], 0);
 map.setMaxBounds(bounds);
 map.on('drag', function () {
     map.panInsideBounds(bounds, { animate: false });
+});
+
+
+map.on('baselayerchange', function (event) {
+    // Clear all layers from the map
+    map.eachLayer(function (layer) {
+        if (layer instanceof L.LayerGroup) {
+            map.removeLayer(layer);
+        }
+    });
+
+    // Show the selected layer group
+    if (event.name === "Primer Piso") {
+        firstMarkers.addTo(map);
+    } else if (event.name === "Segundo Piso") {
+        secondMarkers.addTo(map);
+    } else if (event.name === "Tercer Piso") {
+        thirdMarkers.addTo(map);
+    } /*else if (event.name === "Cuarto Piso"){
+        fourthMarkers.addTo(map);
+    } else if (event.name === "Quinto Piso"){
+        fifthMarkers.addTo(map);
+    }*/
 });
 
 /*
