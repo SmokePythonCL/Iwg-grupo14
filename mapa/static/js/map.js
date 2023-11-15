@@ -15,7 +15,7 @@ var basemaps = {
     "Tercer Piso": thirdfloor,
     //"Cuarto Piso": fourthfloor,
     //"Quinto Piso": fifthfloor,
-}
+};
 
 var firstMarkers = L.layerGroup();
 var secondMarkers = L.layerGroup();
@@ -88,19 +88,19 @@ for (var tipo in coords) {
     coordenadas = coords[tipo][0];
     punto = xy(coordenadas[0], coordenadas[1]);
     estado = coordenadas[2].concat(tipo);
-    capa = coordenadas[3].toLowerCase();
+    capa = coordenadas[3];
 
     var marker = L.marker(punto, { icon: eval(estado), customOption: capa }).bindPopup(tipo).on('click', onClick);
 
-    if (capa === "primer piso") {
+    if (capa === "0") {
         firstMarkers.addLayer(marker);
-    } else if (capa === "segundo piso") {
+    } else if (capa === "1") {
         secondMarkers.addLayer(marker);
-    } else if (capa === "tercer piso") {
+    } else if (capa === "2") {
         thirdMarkers.addLayer(marker);
-    } /*else if (capa === "cuarto piso"){
+    } /*else if (capa === "3"){
         fourthMarkers.addLayer(marker);
-    } else if (capa === "quinto piso"){
+    } else if (capa === "4"){
         fifthMarkers.addLayer(marker);
     }*/
 }

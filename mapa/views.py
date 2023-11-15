@@ -37,7 +37,6 @@ def status(request):
         coord_x = item.coord_x
         coord_y = item.coord_y
         layer = item.layer
-        layer= layer.lower()
 
         coords_dicts[coord_type].append([coord_x, coord_y, status, layer])
 
