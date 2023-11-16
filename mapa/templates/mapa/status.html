@@ -23,5 +23,21 @@
         <i class="fa fa-home"></i>
     </span>
     <div id="map" data-json="{{ coords }}"></div>
+    <script>
+        function customPopup(id) {
+            var customPopup = ` <div class='popup-txt'>
+                                ¿En que estado se encuentra el punto?
+                            </div>
+                            <div class='popup-btn'>
+                                <form method="post" action="">
+                                    {% csrf_token %} 
+                                    <button type='submit' value='available'>Habilitado</button>
+                                    <button type='submit' value='disabled'>Deshabilitado</button>
+                                </form>
+                            </div>`;
+
+            return customPopup;
+        }
+    </script>
     <script src="{% static '/js/map.js' %}" defer></script>
     {% endblock %}

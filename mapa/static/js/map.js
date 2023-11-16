@@ -1,11 +1,11 @@
 // Variables
-var bounds = [[0,0], [1000,1000]];
+var bounds = [[0, 0], [1000, 1000]];
 var basemap = L.imageOverlay('/static/images/CAMPUS-SJ.png', bounds,
-            {attribution: "USM SJ"});
+    { attribution: "USM SJ" });
 var secondfloor = L.imageOverlay('/static/images/testmap2.jpg', bounds,
-            {attribution: "USM SJ"});
+    { attribution: "USM SJ" });
 var thirdfloor = L.imageOverlay('/static/images/testmap.jpg', bounds,
-            {attribution: "USM SJ"});
+    { attribution: "USM SJ" });
 //var fourthfloor = L.imageOverlay('/static/images/', bounds, {attribution: "USM SJ"});
 //var fifthfloor = L.imageOverlay('/static/images/', bounds, {attribution: "USM SJ"});
 
@@ -32,7 +32,7 @@ var map = L.map('map', {
 });
 
 var yx = L.latLng;
-var xy = function(x, y) {
+var xy = function (x, y) {
     if (Array.isArray(x)) {    // When doing xy([x, y]);
         return yx(x[1], x[0]);
     }
@@ -41,42 +41,62 @@ var xy = function(x, y) {
 
 var baseIcon = L.Icon.extend({
     options: {
-        iconSize:     [50, 100],
-        iconAnchor:   [22, 94],
-        popupAnchor:  [-3, -76]
+        iconSize: [50, 100],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76]
     }
 });
 
-var greenLift = new baseIcon({iconUrl: '/static/icons/elevator-solid.svg', 
-                            className: "green-elevator"}),
+var greenLift = new baseIcon({
+    iconUrl: '/static/icons/elevator-solid.svg',
+    className: "green-elevator"
+}),
 
-    yellowLift = new baseIcon({iconUrl: '/static/icons/elevator-solid.svg', 
-                            className: "yellow-elevator"}),
-                            
-    redLift = new baseIcon({iconUrl: '/static/icons/elevator-solid.svg', 
-                            className: "red-elevator"}),
+    yellowLift = new baseIcon({
+        iconUrl: '/static/icons/elevator-solid.svg',
+        className: "yellow-elevator"
+    }),
 
-    greenSlope = new baseIcon({iconUrl: '/static/icons/ramp.svg',
-                            className: "green-slope"}),
+    redLift = new baseIcon({
+        iconUrl: '/static/icons/elevator-solid.svg',
+        className: "red-elevator"
+    }),
 
-    yellowSlope = new baseIcon({iconUrl: '/static/icons/ramp.svg',
-                            className: "yellow-slope"}),
+    greenSlope = new baseIcon({
+        iconUrl: '/static/icons/ramp.svg',
+        className: "green-slope"
+    }),
 
-    redSlope = new baseIcon({iconUrl: '/static/icons/ramp.svg',
-                            className: "red-slope"}),
+    yellowSlope = new baseIcon({
+        iconUrl: '/static/icons/ramp.svg',
+        className: "yellow-slope"
+    }),
 
-    greenOther = new baseIcon({iconUrl: '/static/icons/ramp.svg', 
-                                className: "green-slope"}),
+    redSlope = new baseIcon({
+        iconUrl: '/static/icons/ramp.svg',
+        className: "red-slope"
+    }),
 
-    yellowOther = new baseIcon({iconUrl: '/static/icons/ramp.svg', 
-                                className: "yellow-slope"}),
+    greenOther = new baseIcon({
+        iconUrl: '/static/icons/ramp.svg',
+        className: "green-slope"
+    }),
 
-    redOther = new baseIcon({iconUrl: '/static/icons/ramp.svg', 
-                                className: "red-slope"});
+    yellowOther = new baseIcon({
+        iconUrl: '/static/icons/ramp.svg',
+        className: "yellow-slope"
+    }),
 
+    redOther = new baseIcon({
+        iconUrl: '/static/icons/ramp.svg',
+        className: "red-slope"
+    });
+
+/*
 function onClick(e) {
     alert(this.getLatLng());
 }
+*/
 
 var coords = JSON.parse(document.querySelector("#map").getAttribute('data-json'));
 var coordenadas = [];
@@ -84,13 +104,21 @@ var punto = null;
 var estado = null;
 var capa = null;
 
+var customOptions =
+{
+    'maxWidth': '400',
+    'width': '200',
+    'className': 'popupCustom'
+}
+
 for (var tipo in coords) {
     coordenadas = coords[tipo][0];
     punto = xy(coordenadas[0], coordenadas[1]);
     estado = coordenadas[2].concat(tipo);
     capa = coordenadas[3];
+    id = null;
 
-    var marker = L.marker(punto, { icon: eval(estado), customOption: capa }).bindPopup(tipo).on('click', onClick);
+    var marker = L.marker(punto, { icon: eval(estado), customOption: capa }).bindPopup(customPopup(id), customOptions);
 
     if (capa === "0") {
         firstMarkers.addLayer(marker);
@@ -109,7 +137,7 @@ firstMarkers.addTo(map);
 var layerControl = L.control.layers(basemaps).addTo(map);
 
 // Map set
-map.setView( [500, 500], 0);
+map.setView([500, 500], 0);
 map.setMaxBounds(bounds);
 map.on('drag', function () {
     map.panInsideBounds(bounds, { animate: false });
