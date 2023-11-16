@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var closeMsg = document.getElementById("closeMessage");
     var notShowAgainCheckbox = document.getElementById("notShowAgain");
     var welcome = document.getElementById("welcoming");
+    var homeIcon = document.getElementById("icon_cont");
 
     var displayToggle = 1;
     btnHelp.onclick = function () {
@@ -44,11 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 helpTitle.style.width = titleWidth + "px";
             }
         }
+        homeIcon.style.display = "none";
     }
 
     function hideHelp() {
         description.style.animation = "fadeout-bottom 0.6s";
-        heading.style.animation = "fadeout-left 0.6s"
+        heading.style.animation = "fadeout-left 0.6s";
         var bodyHeight = 250;
         var titleWidth = 250;
         var id2 = setInterval(frame2,1);
@@ -71,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 helpBody.style.height = bodyHeight + "px";
             }
         }
+        setTimeout(function() {
+            homeIcon.style.display = "flex";
+        }, 500);
     }
     //localStorage.setItem("messageDisplayed", "false"); //to check if welcome message works
     if (localStorage.getItem("messageDisplayed") !== "true") {

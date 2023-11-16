@@ -17,16 +17,16 @@
     <div class="help-body" id="helpBody">
         <p id="description">Para saber el estado de algún punto de la universidad tan solo necesitas fijarte en el color de su ícono: <span class="red">rojo</span>, 
             significa fuera de servicio, <span class="yellow">amarillo</span>, que se debe tener precaución, y <span class="green">verde</span>, que se encuentra en buen estado. 
-            Puedes hacer click en los íconos para dejar comentarios respecto al punto seleccionado y/o notificar de algún cambio en su estado.</p>
+            Puedes hacer click en los íconos de cada punto para notificar algún cambio en su estado.</p>
     </div>
-    <span class="icon_container" onclick="window.location.href='/index'">
+    <span class="icon_container" onclick="window.location.href='/index'" id ="icon_cont">
         <i class="fa fa-home"></i>
     </span>
     <div id="map" data-json="{{ coords }}"></div>
     <script>
         function customPopup(id) {
             var customPopup = ` <div class='popup-txt'>
-                                ¿En que estado se encuentra el punto?
+                                ¿En qué estado se encuentra el punto?
                             </div>
                             <div class='popup-btn'>
                                 <form method="post" action="">
