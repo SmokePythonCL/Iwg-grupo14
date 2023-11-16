@@ -5,6 +5,7 @@
     <title>Estado mapa - G14</title>
     <link rel="stylesheet" type="text/css" href="{% static '/css/map.css' %}" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
 {% endblock %}
 
@@ -18,7 +19,9 @@
             significa fuera de servicio, <span class="yellow">amarillo</span>, que se debe tener precaución, y <span class="green">verde</span>, que se encuentra en buen estado. 
             Puedes hacer click en los íconos para dejar comentarios respecto al punto seleccionado y/o notificar de algún cambio en su estado.</p>
     </div>
-    
+    <span class="icon_container" onclick="window.location.href='/index'">
+        <i class="fa fa-home"></i>
+    </span>
     <div id="map" data-json="{{ coords }}"></div>
     <script src="{% static '/js/map.js' %}" defer></script>
     {% endblock %}
