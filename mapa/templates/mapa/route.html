@@ -6,19 +6,21 @@
 {% endblock %}
 
 {% block bodycontent %}
-    <div class="btn-help" id="btnHelp">?</div>
-    <div class="help-title" id="helpTitle">
-        <h2 id="heading">¿Necesitas ayuda?</h2>
+<div class="btn-help" id="btnHelp">?</div>
+<div class="help-title" id="helpTitle">
+    <h2 id="heading">¿Necesitas ayuda?</h2>
+</div>
+<div class="help-body" id="helpBody">
+    <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque officiis atque dolore
+        inventore architecto cupiditate unde sit explicabo voluptatem. Repellat culpa consequuntur minus? Doloribus a
+        quisquam nam sint velit dolorem.</p>
+</div>
+<div id="overlay">
+    <div class="alert" id="alert">
+        <img src="/static/images/warning-icon.png">
+        <h2>¡Lo sentimos!</h2>
+        <p>Esta sección actualmente aún se encuentra en desarrollo.</p>
+        <button onclick="window.location.href='/index'">Volver</button>
     </div>
-    <div class="help-body" id="helpBody">
-        <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque officiis atque dolore inventore architecto cupiditate unde sit explicabo voluptatem. Repellat culpa consequuntur minus? Doloribus a quisquam nam sint velit dolorem.</p>
-    </div>
-    <div id="overlay">
-        <div class="alert" id="alert">
-            <img src="/static/images/warning-icon.png">
-            <h2>¡Lo sentimos!</h2>
-            <p>Esta sección actualmente aún se encuentra en desarrollo.</p>
-            <button onclick="window.location.href='/index'">Volver</button>
-        </div>
-    </div>
+</div>
 {% endblock %}

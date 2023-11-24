@@ -2,26 +2,28 @@
 {% load static %}
 
 {% block headcontent %}
-    <title>Estado mapa - G14</title>
-    <link rel="stylesheet" type="text/css" href="{% static '/css/map.css' %}" />
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
+<title>Estado mapa - G14</title>
+<link rel="stylesheet" type="text/css" href="{% static '/css/map.css' %}" />
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin="" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
 {% endblock %}
 
 {% block bodycontent %}
-    <div class="btn-help" id="btnHelp">?</div>
-    <div class="help-title" id="helpTitle">
-        <h2 id="heading">¿Necesitas ayuda?</h2>
-    </div>
-    <div class="help-body" id="helpBody">
-        <p id="description">Para saber el estado de algún punto de la universidad tan solo necesitas fijarte en el color de su ícono: <span class="red">rojo</span>, 
-            significa fuera de servicio, <span class="yellow">amarillo</span>, que se debe tener precaución, y <span class="green">verde</span>, que se encuentra en buen estado. 
-            Puedes hacer click en los íconos de cada punto para notificar algún cambio en su estado.</p>
-    </div>
-    <span class="icon_container" onclick="window.location.href='/index'" id ="icon_cont">
-        <i class="fa fa-home"></i>
-    </span>
-    <div id="map" data-json="{{ coords }}"></div>
-    <script src="{% static '/js/map.js' %}" defer></script>
-    {% endblock %}
+<div class="btn-help" id="btnHelp">?</div>
+<div class="help-title" id="helpTitle">
+    <h2 id="heading">¿Necesitas ayuda?</h2>
+</div>
+<div class="help-body" id="helpBody">
+    <p id="description">Para saber el estado de algún punto de la universidad tan solo necesitas fijarte en el color de
+        su ícono: <span class="red">rojo</span>,
+        significa fuera de servicio, <span class="yellow">amarillo</span>, que se debe tener precaución, y <span
+            class="green">verde</span>, que se encuentra en buen estado.
+        Puedes hacer click en los íconos de cada punto para notificar algún cambio en su estado.</p>
+</div>
+<span class="icon_container" onclick="window.location.href='/index'" id="icon_cont">
+    <i class="fa fa-home"></i>
+</span>
+<div id="map" data-json="{{ coords }}"></div>
+<script src="{% static '/js/map.js' %}" defer></script>
+{% endblock %}

@@ -121,9 +121,9 @@ function Point_click(point_id, status, point_type) {
         headers: { "Content-type": "application/json; charset=UTF-8" }
     });
 
-    setTimeout(function () { 
+    setTimeout(function () {
         location.reload();
-      }, 100);
+    }, 100);
 };
 
 function customPopup(point_id, point_type) {
