@@ -92,11 +92,50 @@ var greenLift = new baseIcon({
         className: "red-slope"
     });
 
-/*
-function onClick(e) {
-    alert(this.getLatLng());
-}
-*/
+
+function Point_click(point_id, status, point_type) {
+    for (var item in coords) {
+        for (var data in coords[item]) {
+            if (coords[item][data][4] === point_id) {
+
+                var coord_x = coords[item][data][0]
+                var coord_y = coords[item][data][1]
+                var capa_punto = coords[item][data][3]
+
+
+                var coords_send = {
+                    point_id,
+                    status,
+                    coord_x,
+                    coord_y,
+                    capa_punto,
+                    point_type
+                };
+            };
+        }
+    };
+
+    fetch("/status/", {
+        method: "POST",
+        body: JSON.stringify(coords_send),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    });
+
+    setTimeout(function () { 
+        location.reload();
+      }, 100);
+};
+
+function customPopup(point_id, point_type) {
+    var customPopup = ` <div class='popup-txt'>
+                        ¿En que estado se encuentra el punto?
+                    </div>
+                    <div class='popup-btn'>
+                        <button class="vote-button" type='submit' id='available' onclick="Point_click(${point_id}, id, '${point_type}');">Habilitado</button>
+                        <button class="vote-button" type='submit' id='disabled' onclick="Point_click(${point_id}, id, '${point_type}');">Deshabilitado</button>
+                    </div>`;
+    return customPopup;
+};
 
 var coords = JSON.parse(document.querySelector("#map").getAttribute('data-json'));
 var coordenadas = [];
@@ -116,9 +155,9 @@ for (var tipo in coords) {
     punto = xy(coordenadas[0], coordenadas[1]);
     estado = coordenadas[2].concat(tipo);
     capa = coordenadas[3];
-    id = null;
+    id = coordenadas[4];
 
-    var marker = L.marker(punto, { icon: eval(estado), customOption: capa }).bindPopup(customPopup(id), customOptions);
+    var marker = L.marker(punto, { icon: eval(estado), customOption: capa }).bindPopup(customPopup(id, tipo), customOptions);
 
     if (capa === "0") {
         firstMarkers.addLayer(marker);
@@ -165,13 +204,3 @@ map.on('baselayerchange', function (event) {
         fifthMarkers.addTo(map);
     }*/
 });
-
-/*
-function test() {
-    console.log("Cambio")
-};
-
-map.on('baselayerchange', test());
-
-Reemplazar layerControl por funciones onClick dentro del mapa.
-*/
