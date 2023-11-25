@@ -158,25 +158,28 @@ for (var tipo in coords) {
         coordenadas = coords[tipo][i];
         punto = xy(coordenadas[0], coordenadas[1]);
         estado = coordenadas[2].concat(tipo);
-        capa = coordenadas[3];
-        id = coordenadas[4];
 
-        var marker = L.marker(punto, { icon: eval(estado), customOption: capa }).bindPopup(customPopup(id, tipo), customOptions);
+        for (let a = 0; a < coordenadas[3].length; a++) {
+            capa = coordenadas[3][a];
+            id = coordenadas[4];
 
-        if (capa === "0") {
-            firstMarkers.addLayer(marker);
-        } else if (capa === "1") {
-            secondMarkers.addLayer(marker);
-        } else if (capa === "2") {
-            thirdMarkers.addLayer(marker);
-        } else if (capa === "3"){
-            fourthMarkers.addLayer(marker);
-        } else if (capa === "4"){
-            fifthMarkers.addLayer(marker);
-        } else if (capa === "5"){
-            sixthMarkers.addLayer(marker);
-        } else if (capa === "6"){
-            zeroMarkers.addLayer(marker);
+            var marker = L.marker(punto, { icon: eval(estado), customOption: capa }).bindPopup(customPopup(id, tipo), customOptions);
+
+            if (capa === "0") {
+                firstMarkers.addLayer(marker);
+            } else if (capa === "1") {
+                secondMarkers.addLayer(marker);
+            } else if (capa === "2") {
+                thirdMarkers.addLayer(marker);
+            } else if (capa === "3"){
+                fourthMarkers.addLayer(marker);
+            } else if (capa === "4"){
+                fifthMarkers.addLayer(marker);
+            } else if (capa === "5"){
+                sixthMarkers.addLayer(marker);
+            } else if (capa === "6"){
+                zeroMarkers.addLayer(marker);
+            }
         }
     }
 }
