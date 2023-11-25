@@ -6,7 +6,9 @@ class CoordsModel(models.Model):
 
     POINT_CHOICE = [("0", "Ascensor"), ("1", "Rampa"), ("2", "Otro")]
     STATUS = [("0", "Verde"), ("1", "Amarillo"), ("2", "Rojo")]
-    LAYERS = [("0", "primer piso"), ("1", "segundo piso"), ("2", "tercer piso")]
+    LAYERS = [("0", "Primer piso"), ("1", "Segundo piso"), ("2", "Tercer piso"),
+              ("3", "Cuarto piso"), ("4", "Quinto piso"), ("5", "Sexto piso"),
+              ("6", "Primer piso")]
 
     name = models.CharField(max_length=100)
     point_type = models.CharField(max_length=1, choices=POINT_CHOICE)
