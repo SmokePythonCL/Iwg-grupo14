@@ -4,7 +4,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     font-family: Palatino;
-    background-image: url(/static/images/testmap3.webp);
+    background-image: url(/static/images/background.webp);
     margin: 0;
     padding: 20px;
     background-size: cover;

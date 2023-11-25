@@ -1,27 +1,30 @@
 // Variables
 var bounds = [[0, 0], [1000, 1000]];
-var basemap = L.imageOverlay('/static/images/CAMPUS-SJ.png', bounds,
-    { attribution: "USM SJ" });
-var secondfloor = L.imageOverlay('/static/images/testmap2.jpg', bounds,
-    { attribution: "USM SJ" });
-var thirdfloor = L.imageOverlay('/static/images/testmap.jpg', bounds,
-    { attribution: "USM SJ" });
-//var fourthfloor = L.imageOverlay('/static/images/', bounds, {attribution: "USM SJ"});
-//var fifthfloor = L.imageOverlay('/static/images/', bounds, {attribution: "USM SJ"});
+var basemap = L.imageOverlay('/static/images/CAMPUS-SJ_1stFloor.png', bounds, { attribution: "USM SJ" });
+var secondfloor = L.imageOverlay('/static/images/CAMPUS-SJ_2ndFloor.png', bounds, { attribution: "USM SJ" });
+var thirdfloor = L.imageOverlay('/static/images/CAMPUS-SJ_3rdFloor.png', bounds, { attribution: "USM SJ" });
+var fourthfloor = L.imageOverlay('/static/images/CAMPUS-SJ_4thFloor.png', bounds, { attribution: "USM SJ" });
+var fifthfloor = L.imageOverlay('/static/images/CAMPUS-SJ_5thFloor.png', bounds, { attribution: "USM SJ" });
+var sixthfloor = L.imageOverlay('/static/images/CAMPUS-SJ_6thFloor.png', bounds, { attribution: "USM SJ" });
+var zerofloor = L.imageOverlay('/static/images/CAMPUS-SJ_SubFloor.png', bounds, { attribution: "USM SJ" });
 
 var basemaps = {
     "Primer Piso": basemap,
     "Segundo Piso": secondfloor,
     "Tercer Piso": thirdfloor,
-    //"Cuarto Piso": fourthfloor,
-    //"Quinto Piso": fifthfloor,
+    "Cuarto Piso": fourthfloor,
+    "Quinto Piso": fifthfloor,
+    "Sexto Piso": sixthfloor,
+    "Subterraneo": zerofloor,
 };
 
 var firstMarkers = L.layerGroup();
 var secondMarkers = L.layerGroup();
 var thirdMarkers = L.layerGroup();
-//var fourthMarkers = L.layerGroup();
-//var fifthMarkers = L.layerGroup();
+var fourthMarkers = L.layerGroup();
+var fifthMarkers = L.layerGroup();
+var sixthMarkers = L.layerGroup();
+var zeroMarkers = L.layerGroup();
 
 var map = L.map('map', {
     crs: L.CRS.Simple,
@@ -165,11 +168,15 @@ for (var tipo in coords) {
         secondMarkers.addLayer(marker);
     } else if (capa === "2") {
         thirdMarkers.addLayer(marker);
-    } /*else if (capa === "3"){
+    } else if (capa === "3"){
         fourthMarkers.addLayer(marker);
     } else if (capa === "4"){
         fifthMarkers.addLayer(marker);
-    }*/
+    } else if (capa === "5"){
+        sixthMarkers.addLayer(marker);
+    } else if (capa === "6"){
+        zeroMarkers.addLayer(marker);
+    }
 }
 //Add only first layer markers since it's the default layer
 firstMarkers.addTo(map);
@@ -198,9 +205,13 @@ map.on('baselayerchange', function (event) {
         secondMarkers.addTo(map);
     } else if (event.name === "Tercer Piso") {
         thirdMarkers.addTo(map);
-    } /*else if (event.name === "Cuarto Piso"){
+    } else if (event.name === "Cuarto Piso"){
         fourthMarkers.addTo(map);
     } else if (event.name === "Quinto Piso"){
         fifthMarkers.addTo(map);
-    }*/
+    } else if (event.name === "Sexto Piso"){
+        sixthMarkers.addTo(map);
+    } else if (event.name === "Subterraneo"){
+        zeroMarkers.addTo(map);
+    }
 });
