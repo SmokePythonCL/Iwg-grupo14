@@ -12,7 +12,7 @@ body {
 }
 
 .green-elevator {
-  filter: brightness(0) saturate(100%) invert(65%) sepia(74%) saturate(3491%) hue-rotate(84deg) brightness(117%) contrast(109%);
+  filter: brightness(0) saturate(100%) invert(45%) sepia(99%) saturate(1388%) hue-rotate(92deg) brightness(93%) contrast(95%);
   max-height: 100px;
   max-width: 100px;
 }
@@ -30,7 +30,7 @@ body {
 }
 
 .green-slope {
-  filter: brightness(0) saturate(100%) invert(65%) sepia(74%) saturate(3491%) hue-rotate(84deg) brightness(117%) contrast(109%);
+  filter: brightness(0) saturate(100%) invert(45%) sepia(99%) saturate(1388%) hue-rotate(92deg) brightness(93%) contrast(95%);
   max-height: 100px;
   max-width: 100px;
 }

@@ -28,7 +28,7 @@ var zeroMarkers = L.layerGroup();
 
 var map = L.map('map', {
     crs: L.CRS.Simple,
-    minZoom: 0,
+    minZoom: 1,
     maxZoom: 4,
     layers: [basemap],
     attribution: "USM SJ"
@@ -44,9 +44,9 @@ var xy = function (x, y) {
 
 var baseIcon = L.Icon.extend({
     options: {
-        iconSize: [50, 100],
-        iconAnchor: [22, 94],
-        popupAnchor: [-3, -76]
+        iconSize: [250, 50],
+        iconAnchor: [125, 50],
+        popupAnchor: [0, -25]
     }
 });
 
