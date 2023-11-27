@@ -138,6 +138,26 @@ body {
   border-color: rgba(35, 27, 27, 0.1);
 }
 
-#disabled:active {
-  background-color: #8e2929;
+#caution:active {
+  background-color: #8e8729;
+}
+
+#caution {
+  background-color: #a4a22e;
+}
+
+#caution:hover {
+  background-color: #97902c;
+}
+
+#caution:focus {
+  box-shadow: rgba(164, 152, 46, 0.4) 0 0 0 3px;
+}
+
+#caution:disabled {
+  border-color: rgba(35, 34, 27, 0.1);
+}
+
+#caution:active {
+  background-color: #8e7f29;
 }

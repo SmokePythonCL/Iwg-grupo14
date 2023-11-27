@@ -21,7 +21,10 @@ def status(request):
         
         if coords["status"] == "available":
             status = 0
-
+        	
+        elif coords["status"] == "caution":
+            status = 1
+            
         elif coords["status"] == "disabled":
             status = 2
 

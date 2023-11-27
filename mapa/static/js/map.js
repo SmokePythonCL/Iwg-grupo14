@@ -135,6 +135,7 @@ function customPopup(point_id, point_type) {
                     </div>
                     <div class='popup-btn'>
                         <button class="vote-button" type='submit' id='available' onclick="Point_click(${point_id}, id, '${point_type}');">Habilitado</button>
+                        <button class="vote-button" type='submit' id='caution' onclick="Point_click(${point_id}, id, '${point_type}');">Precaución</button>
                         <button class="vote-button" type='submit' id='disabled' onclick="Point_click(${point_id}, id, '${point_type}');">Deshabilitado</button>
                     </div>`;
     return customPopup;
