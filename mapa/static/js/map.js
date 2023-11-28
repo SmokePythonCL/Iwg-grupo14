@@ -131,7 +131,7 @@ function Point_click(point_id, status, point_type) {
 
 function customPopup(point_id, point_type) {
     var customPopup = ` <div class='popup-txt'>
-                        ¿En que estado se encuentra el punto?
+                        ¿En qué estado se encuentra el punto?
                     </div>
                     <div class='popup-btn'>
                         <button class="vote-button" type='submit' id='available' onclick="Point_click(${point_id}, id, '${point_type}');">Habilitado</button>
