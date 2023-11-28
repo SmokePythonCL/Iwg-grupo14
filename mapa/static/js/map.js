@@ -8,6 +8,7 @@ var fifthfloor = L.imageOverlay('/static/images/CAMPUS-SJ_5thFloor.png', bounds,
 var sixthfloor = L.imageOverlay('/static/images/CAMPUS-SJ_6thFloor.png', bounds, { attribution: "USM SJ" });
 var zerofloor = L.imageOverlay('/static/images/CAMPUS-SJ_SubFloor.png', bounds, { attribution: "USM SJ" });
 
+// Custom Layers
 var basemaps = {
     "Primer Piso": basemap,
     "Segundo Piso": secondfloor,
@@ -18,6 +19,7 @@ var basemaps = {
     "Subterraneo": zerofloor,
 };
 
+//Groups for the markers
 var firstMarkers = L.layerGroup();
 var secondMarkers = L.layerGroup();
 var thirdMarkers = L.layerGroup();
@@ -26,6 +28,7 @@ var fifthMarkers = L.layerGroup();
 var sixthMarkers = L.layerGroup();
 var zeroMarkers = L.layerGroup();
 
+//Map config
 var map = L.map('map', {
     crs: L.CRS.Simple,
     minZoom: 1,
@@ -34,6 +37,7 @@ var map = L.map('map', {
     attribution: "USM SJ"
 });
 
+//Function for assign coordinates to the markers
 var yx = L.latLng;
 var xy = function (x, y) {
     if (Array.isArray(x)) {    // When doing xy([x, y]);
@@ -42,6 +46,7 @@ var xy = function (x, y) {
     return yx(y, x);  // When doing xy(x, y);
 };
 
+//Custom confi on the markers
 var baseIcon = L.Icon.extend({
     options: {
         iconSize: [250, 50],
@@ -95,7 +100,7 @@ var greenLift = new baseIcon({
         className: "red-slope"
     });
 
-
+//When click the button change the status of the point
 function Point_click(point_id, status, point_type) {
     for (var item in coords) {
         for (var data in coords[item]) {
@@ -129,6 +134,7 @@ function Point_click(point_id, status, point_type) {
     }, 100);
 };
 
+//Custom config on the Popup
 function customPopup(point_id, point_type) {
     var customPopup = ` <div class='popup-txt'>
                         ¿En qué estado se encuentra el punto?
@@ -141,6 +147,7 @@ function customPopup(point_id, point_type) {
     return customPopup;
 };
 
+//More variables *Should be at top
 var coords = JSON.parse(document.querySelector("#map").getAttribute('data-json'));
 var coordenadas = [];
 var punto = null;
@@ -154,6 +161,7 @@ var customOptions =
     'className': 'popupCustom'
 }
 
+//Create the markers and assign the config
 for (var tipo in coords) {
     for (let i = 0; i < coords[tipo].length; i++) {
         coordenadas = coords[tipo][i];
@@ -184,6 +192,7 @@ for (var tipo in coords) {
         }
     }
 }
+
 //Add only first layer markers since it's the default layer
 firstMarkers.addTo(map);
 var layerControl = L.control.layers(basemaps).addTo(map);
@@ -195,7 +204,7 @@ map.on('drag', function () {
     map.panInsideBounds(bounds, { animate: false });
 });
 
-
+//Function to change the layers
 map.on('baselayerchange', function (event) {
     // Clear all layers from the map
     map.eachLayer(function (layer) {
