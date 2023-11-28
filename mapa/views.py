@@ -14,6 +14,7 @@ def index(request):
 def route(request):
     return render(request, 'mapa/route.html')
 
+#Manage the type of request and save or send the info
 @csrf_exempt
 def status(request):
     if request.method == "POST":
